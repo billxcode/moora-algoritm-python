@@ -2,8 +2,8 @@
 LENGTH_OF_ROW = 0
 LENGTH_OF_COLUMN = 0
 
-with open('sample.txt', 'r') as file:
-    with open('new_sample.txt', 'w') as newfile:
+with open('data/sample.txt', 'r') as file:
+    with open('result/sqr.txt', 'w') as newfile:
         for newdata in file:
             data_info = newdata.split(' ')
             data_count = len(data_info)
@@ -13,11 +13,20 @@ with open('sample.txt', 'r') as file:
                         newfile.write(newdimension.strip()+',')
                     else:
                         newfile.write(newdimension.strip()+'\n')
-with open('new_sample.txt', 'r') as file:
-    for data in file:
-       datainfo = data.split(',')
-       for index, newdata in enumerate(datainfo):
-           datainfo[index] = int(datainfo[index])**2
-           print(str(datainfo[index])+' ', end='')
 
-        
+print('success sqr dimension!')
+
+with open('result/sqr.txt', 'r') as file:
+    with open('result/sumrow.txt', 'w') as newfile:
+        for data in file:
+            datainfo = data.split(',')
+            datacount = len(datainfo)
+            for index, newdata in enumerate(datainfo):
+                datainfo[index] = int(datainfo[index])**2
+                if index<(datacount-1):
+                    newfile.write(str(datainfo[index])+' ') 
+                else:
+                    newfile.write('\n')
+
+print('success sum all row!')
+# with open('total_perbaris.txt', 'r')
