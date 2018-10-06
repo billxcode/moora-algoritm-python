@@ -1,7 +1,12 @@
 #!/bin/bash
+from math import sqrt
+from cmath import sqrt
+
+
 LENGTH_OF_ROW = 0
 LENGTH_OF_COLUMN = 0
 
+# clean data from dirty file text
 with open('data/sample.txt', 'r') as file:
     with open('result/clean.txt', 'w') as newfile:
         for newdata in file:
@@ -16,6 +21,7 @@ with open('data/sample.txt', 'r') as file:
 
 print('success clean dimension!')
 
+# create sqr.txt file that contain sqr for all element dimension
 with open('result/clean.txt', 'r') as file:
     with open('result/sqr.txt', 'w') as newfile:
         for data in file:
@@ -30,6 +36,7 @@ with open('result/clean.txt', 'r') as file:
 
 print('success sqr dimension')
 
+# create file sumrow.txt that contain sum of all rows
 with open('result/sqr.txt') as file:
     with open('result/sumrow.txt', 'w') as newfile:
         for data in file:
@@ -39,10 +46,26 @@ with open('result/sqr.txt') as file:
             for index, newdata in enumerate(datainfo):
                 if newdata!='\n':
                     sum_row += int(newdata)
-            # print('=> '+str(sum_row))
             newfile.write(str(sum_row).rstrip('\n')+',')
 
 print('success sum all rows')
 
+with open('result/sumrow.txt', 'r') as file:
+    with open('result/normalization.txt', 'w') as newfile:
+        with open('result/sqr.txt', 'r') as sqr:
+            for sumrow in file:
+                splitIntoColumn = sumrow.split(',')
+                for index, column in enumerate(splitIntoColumn):
+                    for row in sqr:
+                        datainfo = row.split(' ')
+                        resultPerElement = 0
+                        for index, newdata in enumerate(datainfo):
+                            if newdata!='\n':
+                                resultPerElement = int(column)-int(newdata)
+                                if resultPerElement>0:
+                                    resultPerElement = sqrt(resultPerElement)
+                                else:
+                                    resultPerElement = 0 
+                                print(str(resultPerElement), end='')
 
-# with open('total_perbaris.txt', 'r')
+                
