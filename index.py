@@ -55,17 +55,30 @@ with open('result/sumrow.txt', 'r') as file:
         with open('result/sqr.txt', 'r') as sqr:
             for sumrow in file:
                 splitIntoColumn = sumrow.split(',')
-                for index, column in enumerate(splitIntoColumn):
-                    for row in sqr:
-                        datainfo = row.split(' ')
-                        resultPerElement = 0
-                        for index, newdata in enumerate(datainfo):
-                            if newdata!='\n':
-                                resultPerElement = int(column)-int(newdata)
-                                if resultPerElement>0:
-                                    resultPerElement = sqrt(resultPerElement)
-                                else:
-                                    resultPerElement = 0 
-                                print(str(resultPerElement), end='')
+                # for index, column in enumerate(splitIntoColumn):
+                    # indexColumn = 0
+                    # print(column)
+                indexColumn = 0
+                for row in sqr:
+                    datainfo = row.split(' ')
+                    for index, newdata in enumerate(datainfo):
+                        if newdata!='\n':
+                            if splitIntoColumn[indexColumn]!='':
+                                resultPerElement = int(splitIntoColumn[indexColumn])-int(newdata)
+                            else:
+                                resultPerElement = 0
+                            if resultPerElement>0:
+                                sqrtElement = sqrt(int(newdata))
+                                resultPerElement = sqrt(resultPerElement)
+                                result = sqrtElement/resultPerElement
+                            else:
+                                sqrtElement = 0
+                                resultPerElement = 0 
+                                result = 0
+                            newfile.write(str(result.real)+' ')
+                    newfile.write('\n')
+                    indexColumn += 1
+
+print('success normalized!')
 
                 
