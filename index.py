@@ -2,9 +2,7 @@
 from math import sqrt
 from cmath import sqrt
 
-
-LENGTH_OF_ROW = 0
-LENGTH_OF_COLUMN = 0
+NILAI_BOBOT = [0.1, 0.2, 0.3, 0.2, 0.2]
 
 # clean data from dirty file text
 with open('data/sample.txt', 'r') as file:
@@ -50,14 +48,13 @@ with open('result/sqr.txt') as file:
 
 print('success sum all rows')
 
+# create normalization file that contain all element that have been normalize
+
 with open('result/sumrow.txt', 'r') as file:
     with open('result/normalization.txt', 'w') as newfile:
         with open('result/sqr.txt', 'r') as sqr:
             for sumrow in file:
                 splitIntoColumn = sumrow.split(',')
-                # for index, column in enumerate(splitIntoColumn):
-                    # indexColumn = 0
-                    # print(column)
                 indexColumn = 0
                 for row in sqr:
                     datainfo = row.split(' ')
@@ -81,4 +78,20 @@ with open('result/sumrow.txt', 'r') as file:
 
 print('success normalized!')
 
+# create file matrix terbobot
+
+newfile = open('result/matrixterbobot.txt', 'w')
+with open('result/normalization.txt', 'r') as file:
+    for bobot in NILAI_BOBOT:
+        for normalization in file:
+            splitNormalization = normalization.split(' ')
+            for index, normalization in enumerate(splitNormalization):
+                if normalization!='\n':
+                    matrixTerbobot = bobot*float(normalization)
+                    newfile.write(str(matrixTerbobot)+',')
+                    print(str(matrixTerbobot)+',', end='')
+            newfile.write('\n')
+            print('\n', end='')
+            
+    
                 
