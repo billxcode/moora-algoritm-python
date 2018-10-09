@@ -79,7 +79,6 @@ with open('result/sumrow.txt', 'r') as file:
 print('success normalized!')
 
 # create file matrix terbobot
-
 newfile = open('result/matrixterbobot.txt', 'w')
 with open('result/normalization.txt', 'r') as file:
     for bobot in NILAI_BOBOT:
@@ -88,10 +87,22 @@ with open('result/normalization.txt', 'r') as file:
             for index, normalization in enumerate(splitNormalization):
                 if normalization!='\n':
                     matrixTerbobot = bobot*float(normalization)
-                    newfile.write(str(matrixTerbobot)+',')
-                    print(str(matrixTerbobot)+',', end='')
+                    newfile.write(str(matrixTerbobot)+' ')
             newfile.write('\n')
-            print('\n', end='')
-            
-    
-                
+
+newfile.close()
+print('success create matrixterbobot')
+
+#create file preferensi
+newfile = open('result/preferensi.txt', 'w')
+with open('result/matrixterbobot.txt', 'r') as datafile:
+    for test in datafile:
+        datainfo = test.split(' ')
+        nilaiPreferensi = 0
+        for index, preferensi in enumerate(datainfo):
+            if preferensi!='\n':
+               nilaiPreferensi += float(preferensi)
+        newfile.write(str(nilaiPreferensi-(float(datainfo[4])*2))+'\n')
+newfile.close()
+
+print('success calculate preferensi')
