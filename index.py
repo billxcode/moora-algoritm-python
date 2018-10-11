@@ -16,7 +16,6 @@ with open('data/sample.txt', 'r') as file:
                         newfile.write(newdimension.strip()+',')
                     else:
                         newfile.write(newdimension.strip()+'\n')
-
 print('success clean dimension!')
 
 # create sqr.txt file that contain sqr for all element dimension
@@ -31,7 +30,6 @@ with open('result/clean.txt', 'r') as file:
                     newfile.write(str(datainfo[index])+' ') 
                 else:
                     newfile.write('\n')
-
 print('success sqr dimension')
 
 # create file sumrow.txt that contain sum of all rows
@@ -45,11 +43,9 @@ with open('result/sqr.txt') as file:
                 if newdata!='\n':
                     sum_row += int(newdata)
             newfile.write(str(sum_row).rstrip('\n')+',')
-
 print('success sum all rows')
 
 # create normalization file that contain all element that have been normalize
-
 with open('result/sumrow.txt', 'r') as file:
     with open('result/normalization.txt', 'w') as newfile:
         with open('result/sqr.txt', 'r') as sqr:
@@ -75,7 +71,6 @@ with open('result/sumrow.txt', 'r') as file:
                             newfile.write(str(result.real)+' ')
                     newfile.write('\n')
                     indexColumn += 1
-
 print('success normalized!')
 
 # create file matrix terbobot
@@ -104,5 +99,4 @@ with open('result/matrixterbobot.txt', 'r') as datafile:
                nilaiPreferensi += float(preferensi)
         newfile.write(str(nilaiPreferensi-(float(datainfo[4])*2))+'\n')
 newfile.close()
-
 print('success calculate preferensi')
