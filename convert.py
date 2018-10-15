@@ -1,6 +1,6 @@
 
-result_convert = open('result_convert.txt', 'w+')
-with open('SMARTTECHNOLOGY.csv', 'r') as smartdata:
+result_convert = open('result/result_convert.txt', 'w+')
+with open('data/SMARTEDUCATE.csv', 'r') as smartdata:
 	for line in smartdata:
             index = 0
             panjang = line.split(',')
@@ -18,9 +18,9 @@ with open('SMARTTECHNOLOGY.csv', 'r') as smartdata:
             result_convert.write('\n')
 result_convert.close()
 
-result_final = open('result_final.txt', 'w+')
+result_final = open('result/result_final.txt', 'w+')
 
-with open('result_convert.txt', 'r') as result_convert:
+with open('result/result_convert.txt', 'r') as result_convert:
     for line in result_convert:
         index = 0
         for perline in line.split('"'):
@@ -31,9 +31,9 @@ with open('result_convert.txt', 'r') as result_convert:
             result_final.write(perline)
 result_final.close()
 
-real_final = open('hasil_smarttechnology.csv', 'w+')
+real_final = open('result/csv/SMARTEDUCATE_RESULT.csv', 'w+')
 hitung_jumlah = 0
-with open('result_final.txt', 'r') as result_final:
+with open('result/result_final.txt', 'r') as result_final:
     for line in result_final:
         index = 0
         panjang = line.split(',')
@@ -41,15 +41,11 @@ with open('result_final.txt', 'r') as result_final:
             datahasil = 0
             panjang_perline = len(perline.split('.'))
             if(panjang_perline > 2):
-                # print(float(perline))
                 bantuan = perline.split('.')
                 if(len(bantuan[panjang_perline-1].split('\n'))>1):
-                    perline = bantuan[0]+'.'+bantuan[1]+'\n'
-                    datahasil = perline
+                    datahasil = bantuan[0]+'.'+bantuan[1]+'\n'
                 else:
-                    perline = bantuan[0]+'.'+bantuan[1]
-                    datahasil = perline
-                # print(datahasil)
+                    datahasil = bantuan[0]+'.'+bantuan[1]
             else:
                 datahasil = perline
             index += 1
@@ -62,12 +58,7 @@ with open('result_final.txt', 'r') as result_final:
             if(index%3==0):
                 real_final.write(cetak)
 real_final.close()
-""" 
-with open('hasil_smartinfrastruktur.txt', 'r') as test:
-        iteration = 0
-        for hasil in test:
-            iteration += 1
-            print(str(iteration)+'>'+str(len(hasil.split(',')))+'>'+hasil) """
+
 
 
 
