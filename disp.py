@@ -1,4 +1,5 @@
-from bokeh.plotting import show, output_file, figure
+from bokeh.plotting import show, output_file, figure, save
+from bokeh.models import HoverTool
 
 NAME_FILE = "result/preferensi.txt"
 RESULT_ARRAY = []
@@ -19,7 +20,8 @@ print(INDEX_ARRAY)
 
 output_file("result.html")
 
-disp = figure()
-disp.line(INDEX_ARRAY, RESULT_ARRAY, line_width=2)
-show(disp)
+disp = figure(plot_width=1000)
+disp.vbar(x=INDEX_ARRAY, width=0.5, bottom=0, top=RESULT_ARRAY, color="#74ADD1")
+
+save(disp)
  
