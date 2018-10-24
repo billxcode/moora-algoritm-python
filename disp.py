@@ -17,8 +17,8 @@ with open(NAME_FILE, 'r') as file:
 output_file("result.html")
 
 disp = figure(plot_width=1000)
-# disp.vbar(x=INDEX_ARRAY, width=0.5, bottom=0, top=RESULT_ARRAY, color="#74ADD1")
-disp.line(INDEX_ARRAY, RESULT_ARRAY, line_width=2, color="#DE2D26")
+disp.vbar(x=INDEX_ARRAY, width=0.5, bottom=0, top=RESULT_ARRAY, color="#74ADD1")
+# disp.line(INDEX_ARRAY, RESULT_ARRAY, line_width=2, color="#DE2D26")
 # disp.inverted_triangle(x=INDEX_ARRAY, y=RESULT_ARRAY, size=8, color="#DE2D26")
 
 save(disp)

@@ -1,6 +1,8 @@
 
+FILE_NAME = input('Tuliskan nama filenya: ')
+
 result_convert = open('result/result_convert.txt', 'w+')
-with open('data/SMARTEDUCATE.csv', 'r') as smartdata:
+with open('data/'+FILE_NAME+'.csv', 'r') as smartdata:
 	for line in smartdata:
             index = 0
             panjang = line.split(',')
@@ -31,7 +33,7 @@ with open('result/result_convert.txt', 'r') as result_convert:
             result_final.write(perline)
 result_final.close()
 
-real_final = open('result/csv/SMARTEDUCATE_RESULT.csv', 'w+')
+real_final = open('result/csv/'+FILE_NAME+'_RESULT.csv', 'w+')
 hitung_jumlah = 0
 with open('result/result_final.txt', 'r') as result_final:
     for line in result_final:
