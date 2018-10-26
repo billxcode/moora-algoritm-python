@@ -10,7 +10,7 @@ this project contain 2 core file that written with python language,
 inorder to finish my thesis in UIN MALIKI MALANG
 
 ## Platform
-BIG DATA
+Data Optimization
 
 ## Creator
 Bill Tanthowi Jauhari
