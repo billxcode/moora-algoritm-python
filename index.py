@@ -7,7 +7,7 @@ NILAI_BOBOT = [0.1, 0.2, 0.3, 0.2, 0.2]
 FILE_NAME = input('Tulis nama filenya : ')
 
 # clean data from dirty file text
-with open('result/csv/'+FILE_NAME+'.csv', 'r') as file:
+with open('result/csv/'+FILE_NAME+'_RESULT.csv', 'r') as file:
     with open('result/clean.txt', 'w') as newfile:
         for newdata in file:
             data_info = newdata.split(',')

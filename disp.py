@@ -1,7 +1,9 @@
 from bokeh.plotting import show, output_file, figure, save
 from bokeh.models import HoverTool
 
-NAME_FILE = "result/preferensi.txt"
+NAME = input('Tuliskan nama file preferensi :')
+
+NAME_FILE = "result/preferensi_"+NAME+"_RESULT.txt"
 RESULT_ARRAY = []
 INDEX_ARRAY = []
 with open(NAME_FILE, 'r') as file:
@@ -14,7 +16,7 @@ with open(NAME_FILE, 'r') as file:
             if row!='':
                 RESULT_ARRAY.append(float(row).real)
 
-output_file("result.html")
+output_file("graph/graph_"+NAME+".html")
 
 disp = figure(plot_width=1000)
 disp.vbar(x=INDEX_ARRAY, width=0.5, bottom=0, top=RESULT_ARRAY, color="#74ADD1")
